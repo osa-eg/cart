@@ -7,12 +7,8 @@
             <div class="row wd-100p mx-auto ">
                 <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
                     <div class="card-sigin">
-                        <div class="mb-5 text-center">
-                            <a href="{{url('/')}}" class="text-center">
-                                <img src="{{'assets/img/brand/favicon.png'}}" class="sign-favicon ht-40" alt="logo">
-                            </a>
-                            <h1 class="main-logo1 mr-1 mr-0 my-auto tx-28 ">{{'عراقلي'}}</h1>
-                        </div>
+                        <x-auth-logo></x-auth-logo>
+
                         <div class="card-sigin">
                             <div class="main-signup-header">
                                 <div class="text-center">
@@ -36,18 +32,7 @@
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <label>{{__('city.the_city')}}</label>
-                                        <select name="city_id" class="form-control">
-                                            <option value="">select</option>
-                                            @foreach(\App\Models\City::all( ) as $city)
-                                                <option value="{{$city->id}}"> {{$city->name}}</option>
-                                            @endforeach
-                                        </select>
-\                                        @error('city_id')
-                                        <p class="text-danger">{{$message}}</p>
-                                        @enderror
-                                    </div>
+
                                     <div class="form-group">
                                         <label>{{__('main.password')}}</label>
                                         <input name="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{__('main.enter_password')}}" type="password" value="{{old('password',123456789)}}" required>
@@ -58,7 +43,6 @@
                                     <div class="form-group">
                                         <label>{{__('main.conf_password')}}</label>
                                         <input name="password-confirmation" class="form-control " placeholder="{{__('main.re_enter_password')}}" type="password" value="{{old('password',123456789)}}" required>
-
                                     </div>
                                     <div class="form-group text-center">
                                         <input type="submit" class="btn btn-main-primary " value="{{ __('main.register') }}">

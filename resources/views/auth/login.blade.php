@@ -7,12 +7,7 @@
             <div class="row wd-100p mx-auto ">
                 <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
                     <div class="card-sigin">
-                        <div class="mb-5 text-center">
-                            <a href="{{url('/')}}" class="text-center">
-                                <img src="{{'logo.png'}}" class="sign-favicon ht-40" alt="logo">
-                            </a>
-                            <h1 class="main-logo1 mr-1 mr-0 my-auto tx-28 ">{{'عراقلي'}}</h1>
-                        </div>
+                        <x-auth-logo></x-auth-logo>
                         <div class="card-sigin">
                             <div class="main-signup-header">
                                 <div class="text-center">
@@ -38,8 +33,9 @@
                                     </div>
 
                                         @if(Route::has('password.request'))
-                                        <div class="form-group">
+                                        <div class=" d-flex justify-content-between ">
                                             <a href="{{route('password.request')}}" class="btn btn-link">{{__('main.forget_password')}}</a>
+                                            <a href="{{route('register')}}" class="btn btn-link">{{__('main.dont_have_account')}}</a>
                                         </div>
                                         @endif
                                         <div class="form-group text-center">

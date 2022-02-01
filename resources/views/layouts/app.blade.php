@@ -246,7 +246,6 @@
                     @endif
                 </div>
             </div>
-
             @yield('content')
         </div>
         <!-- Container closed -->
