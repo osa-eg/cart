@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@media (max-width: 576px) {
+    .country-flag1 {
+        display: flex !important;
+    }
+}
+.select2{
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single{
+    border:1px solid #e1e5ef !important ;
+}
