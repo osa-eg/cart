@@ -27,8 +27,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{__('main.email')}}</label>
-                                        <input name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{__('main.enter_email')}}" type="eamil" value="{{old('username')}}" required>
+                                        <input name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{__('main.enter_email')}}" type="email" value="{{old('email')}}" required>
                                         @error('email')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{__('main.phone')}}</label>
+                                        <input name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="{{__('main.enter_phone')}}" type="tel" value="{{old('phone')}}" required>
+                                        @error('phone')
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>

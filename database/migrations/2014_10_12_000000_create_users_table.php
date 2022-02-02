@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('image');
             $table->string('lang')->default('en');
+            $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -370,6 +370,10 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
+    $('form').submit(function() {
+        $(this).find("button[type='submit']").prop('disabled',true);
+        $(this).find("input[type='submit']").prop('disabled',true);
+    });
 </script>
 
 </body>

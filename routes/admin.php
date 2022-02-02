@@ -1,7 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController, CategoryController,ProductController,UserController, ToggleCategoryActiveController, ToggleProductActiveController};
+use App\Http\Controllers\Admin\{
+    AdminController,
+    CategoryController,
+    ProductController,
+    UserController,
+    ToggleCategoryActiveController,
+    ToggleProductActiveController,
+    ToggleUserActiveController
+};
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -19,4 +27,5 @@ Route::middleware('lang')->prefix(config('settings.admin_prefix','admin'))->grou
 
     Route::get('categories/{category}/toggle_active',ToggleCategoryActiveController::class)->name('category.toggle_active');
     Route::get('products/{product}/toggle_active',ToggleProductActiveController::class)->name('product.toggle_active');
+    Route::get('users/{user}/toggle_active',ToggleUserActiveController::class)->name('user.toggle_active');
 });

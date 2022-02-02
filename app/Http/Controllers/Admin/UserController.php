@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
 
-        $data = User::when(\request()->name, function ($q) {
+        $data = User::customers()->when(\request()->name, function ($q) {
             $q->where('name','%'.$_GET['name'].'%');
         })->paginate();
         return view('admin.users.index',compact('data'));

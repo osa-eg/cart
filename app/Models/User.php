@@ -25,6 +25,7 @@ class User extends Authenticatable
         'phone',
         'password',
         'lang',
+        'active',
     ];
 
     /**
@@ -44,8 +45,13 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'active'=>'boolean'
     ];
 
+    public function scopeCustomers($q)
+    {
+        return $q->whereDoesntHave('roles');
+    }
     public function getAvatarAttribute()
     {
         return ($this->image)?asset($this->image):asset('backend/assets/img/1.jpg');

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
         ]);
         $admin->assignRole('admin');
 
-        for ($i = 1  ; $i <= 1000 ; $i++) {
+        for ($i = 1  ; $i <= 500 ; $i++) {
             $name = $faker->name();
             $data[] = [
                 'name' => $name,
