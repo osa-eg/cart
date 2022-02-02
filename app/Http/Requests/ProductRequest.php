@@ -36,8 +36,8 @@ class ProductRequest extends FormRequest
             'category_id'   => ['required','integer', 'exists:categories,id'],
             'price'         => ['required', 'numeric', 'min:1', 'max:9999'],
             'qty'           => ['required', 'numeric', 'min:1', 'max:9999'],
-            'images'        => ['required','array','min:1'],
-            'images.*'      =>['required','file', 'mimes:jpeg,jpg,png,gif','max:2000'],
+            'images'        => [($this?->product)?'nullable':'required','array','min:1'],
+            'images.*'      =>[($this?->product)?'nullable':'required','file', 'mimes:jpeg,jpg,png,gif','max:2000'],
         ];
 
         return array_merge($translations , $main);

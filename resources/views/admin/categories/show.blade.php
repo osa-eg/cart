@@ -174,7 +174,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="text-center">{{__('category.no_saved_categories')}}</td>
+                                            <td colspan="5" class="text-center">{{__('product.no_saved_products')}}</td>
                                         </tr>
                                     @endforelse
                                     </tbody>
