@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqeInTranslations;
+use App\Rules\UniqueInTranslations;
+use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
@@ -13,7 +16,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +26,20 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+
+        $translations = RuleFactory::make([
+            '%name%'=>['sometimes','required', 'string', 'max:150',new UniqeInTranslations('product_translations','product_id',$this?->product->id??null )],
+            '%description%'=>['sometimes','required', 'string'],
+        ]);
+
+        $main = [
+            'category_id'   => ['required','integer', 'exists:categories,id'],
+            'price'         => ['required', 'numeric', 'min:1', 'max:9999'],
+            'qty'           => ['required', 'numeric', 'min:1', 'max:9999'],
+            'images'        => ['required','array','min:1'],
+            'images.*'      =>['required','file', 'mimes:jpeg,jpg,png,gif','max:2000'],
         ];
+
+        return array_merge($translations , $main);
     }
 }

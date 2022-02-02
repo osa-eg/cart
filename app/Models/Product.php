@@ -5,22 +5,22 @@ namespace App\Models;
 use App\Traits\LangVal;
 use App\Traits\RetrieveMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 
-class Product extends Model implements HasMedia
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+class Product extends BaseModel implements HasMedia , TranslatableContract
 {
-    use HasFactory, HasSlug , InteractsWithMedia, RetrieveMedia, LangVal;
+    use HasFactory , InteractsWithMedia, RetrieveMedia, LangVal, Translatable;
 
     /**
      * @var string[]
      */
     protected $guarded = ['id'];
+    public $translatedAttributes = ['name','slug','description'];
 
     /**
      * @var string[]
@@ -30,6 +30,10 @@ class Product extends Model implements HasMedia
         'qty'=>'integer',
     ];
 
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('images');
+    }
     /**
      * @param \Spatie\MediaLibrary\MediaCollections\Models\Media|null $media
      * @throws \Spatie\Image\Exceptions\InvalidManipulation
@@ -37,7 +41,7 @@ class Product extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(500)
+            ->width(250)
             ->sharpen(10)
             ->nonQueued();
     }
@@ -71,7 +75,15 @@ class Product extends Model implements HasMedia
     }
 
 
+    public function category() :BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 
+    public function getDeletableAttribute() :Bool
+    {
+        return true;
+    }
 
 
 }

@@ -17,39 +17,39 @@
     <link rel="icon" href="{{asset('logo.png')}}" type="image/x-icon"/>
 
     <!-- Icons css -->
-    <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/css/icons.css')}}" rel="stylesheet">
 
     <!--  Right-sidemenu css -->
-    <link href="{{asset('assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/plugins/sidebar/sidebar.css')}}" rel="stylesheet">
 
 
 
     <!-- Sidemenu css -->
-    <link href="{{asset('assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/sidemenu.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/sidemenu.css')}}" rel="stylesheet">
 
 
     <!--  Custom Scroll bar-->
-    <link href="{{asset('assets/plugins/mscrollbar/jquery.mCustomScrollbar.css')}}" rel="stylesheet"/>
+    <link href="{{asset('backend/assets/plugins/mscrollbar/jquery.mCustomScrollbar.css')}}" rel="stylesheet"/>
 
-    <link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
 
     <!--- Style css-->
-    <link href="{{asset('assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/style.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/style-dark.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/style.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/style-dark.css')}}" rel="stylesheet">
 
 
     <!---Skinmodes css-->
-    <link href="{{asset('assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/skin-modes.css')}}" rel="stylesheet" />
+    <link href="{{asset('backend/assets/'.((app()->getLocale() == 'ar')?'css-rtl':'css').'/skin-modes.css')}}" rel="stylesheet" />
 
     <!--- Animations css-->
-    <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/css/animate.css')}}" rel="stylesheet">
     @stack('css')
     {{-- Google font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400&display=swap" rel="stylesheet">
 
-    <link href="{{asset('assets/css/custom_app.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/assets/css/custom_app.css')}}" rel="stylesheet">
     <style>
         body, h1, h2, h3, h4, h5, h6, p{
             font-family: 'Almarai', sans-serif !important;
@@ -72,7 +72,7 @@
 
 <!-- Loader -->
 <div id="global-loader">
-    <img src="{{asset('assets/img/loader.svg')}}" class="loader-img" alt="Loader">
+    <img src="{{asset('backend/assets/img/loader.svg')}}" class="loader-img" alt="Loader">
 </div>
 <!-- /Loader -->
 
@@ -113,15 +113,15 @@
                         <li class="">
                             <div class="d-md-flex">
                                 @if (app()->getLocale() == 'ar')
-                                    <a href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" class="d-flex  nav-item  pl-0 country-flag1" >
+                                    <a href="{{route('changeLocale','en')}}" class="d-flex  nav-item  pl-0 country-flag1" >
                                     <span class="avatar country-Flag mr-0 align-self-center bg-transparent">
-                                        <img src="{{asset('assets/img/flags/us_flag.jpg')}}" alt="img">
+                                        <img src="{{asset('backend/assets/img/flags/us_flag.jpg')}}" alt="img">
                                     </span>
                                     </a>
                                 @else
-                                    <a href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" class="d-flex  nav-item  pl-0 country-flag1" >
+                                    <a href="{{route('changeLocale','ar')}}"  class="d-flex  nav-item  pl-0 country-flag1" >
                                         <span class="avatar country-Flag mr-0 align-self-center bg-transparent">
-                                        <img src="{{asset('assets/img/flags/uae.png')}}" alt="img">
+                                        <img src="{{asset('backend/assets/img/flags/uae.png')}}" alt="img">
                                     </span>
                                     </a>
                                 @endif
@@ -199,8 +199,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" href="{{route('profile')}}" ><i class="fa fa-user-cog"></i> {{__('main.edit_profile')}}</a>
-                                    <a class="dropdown-item" href="{{route('reset_password_view')}}" ><i class="fa fa-user-secret"></i> {{__('main.reset_password')}}</a>
                                     <a class="dropdown-item" href="#" onclick="$('#logout').submit()"><i class="bx bx-log-out"></i> {{__('main.logout')}}</a>
                                     <form action="{{route('logout')}}" class="d-none" method="post" id="logout"> @csrf </form>
                                 </div>
@@ -299,57 +297,57 @@
 
 
 <!-- JQuery min js -->
-<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/jquery/jquery.min.js')}}"></script>
 
 <!-- Bootstrap Bundle js -->
-<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!-- Ionicons js -->
-<script src="{{asset('assets/plugins/ionicons/ionicons.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/ionicons/ionicons.js')}}"></script>
 
 <!-- Moment js -->
-<script async src="{{asset('assets/plugins/moment/moment.js')}}"></script>
+<script async src="{{asset('backend/assets/plugins/moment/moment.js')}}"></script>
 
 <!-- Eva-icons js -->
-<script src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+<script src="{{asset('backend/assets/js/eva-icons.min.js')}}"></script>
 
 <!-- P-scroll js -->
-<script async src="{{asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-<script async src="{{asset('assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
+<script async src="{{asset('backend/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script async src="{{asset('backend/assets/plugins/perfect-scrollbar/p-scroll.js')}}"></script>
 
 <!-- Sticky js -->
-<script async src="{{asset('assets/js/sticky.js')}}"></script>
+<script async src="{{asset('backend/assets/js/sticky.js')}}"></script>
 
 <!-- Rating js-->
-<script async src="{{asset('assets/plugins/rating/jquery.rating-stars.js')}}"></script>
-<script async src="{{asset('assets/plugins/rating/jquery.barrating.js')}}"></script>
+<script async src="{{asset('backend/assets/plugins/rating/jquery.rating-stars.js')}}"></script>
+<script async src="{{asset('backend/assets/plugins/rating/jquery.barrating.js')}}"></script>
 
 <!-- Custom Scroll bar Js-->
-<script async src="{{asset('assets/plugins/mscrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script async src="{{asset('backend/assets/plugins/mscrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
 
 <!-- Horizontalmenu js-->
-{{--<script src="{{asset('assets/plugins/horizontal-menu/horizontal-menu-2/horizontal-menu.js')}}"></script>--}}
+{{--<script src="{{asset('backend/assets/plugins/horizontal-menu/horizontal-menu-2/horizontal-menu.js')}}"></script>--}}
 
-<script src="{{asset('assets/plugins/side-menu/sidemenu.js')}}"></script>
+<script src="{{asset('backend/assets/plugins/side-menu/sidemenu.js')}}"></script>
 
 <!-- Right-sidebar js -->
 @if (app()->getLocale() == 'ar')
-    <script src="{{asset('assets/plugins/sidebar/sidebar-rtl.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/sidebar/sidebar-rtl.js')}}"></script>
 @else
-    <script src="{{asset('assets/plugins/sidebar/sidebar.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/sidebar/sidebar.js')}}"></script>
 
 @endif
 
-<script async src="{{asset('assets/plugins/sidebar/sidebar-custom.js')}}"></script>
+<script async src="{{asset('backend/assets/plugins/sidebar/sidebar-custom.js')}}"></script>
 
 <!-- eva-icons js -->
-<script async src="{{asset('assets/js/eva-icons.min.js')}}"></script>
+<script async src="{{asset('backend/assets/js/eva-icons.min.js')}}"></script>
 @stack('js')
 <!-- custom js -->
-<script defer src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+<script defer src="{{asset('backend/assets/plugins/select2/js/select2.min.js')}}"></script>
 
-<script src="{{asset('assets/js/modal.js')}}"></script>
-<script src="{{asset('assets/js/custom.js')}}"></script>
+<script src="{{asset('backend/assets/js/modal.js')}}"></script>
+<script src="{{asset('backend/assets/js/custom.js')}}"></script>
 
 <script>
     function notification(item){

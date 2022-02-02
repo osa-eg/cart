@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqeInTranslations;
+use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryRequest extends FormRequest
@@ -13,7 +15,7 @@ class CategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +25,12 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        $translations = RuleFactory::make([
+            '%name%'=>['sometimes','nullable', 'string', 'max:150',new UniqeInTranslations('category_translations','category_id',$this?->category?->id??null )],
+        ]);
+        $main = [
+            'parent_id'     => ['sometimes','nullable','integer', 'exists:categories,id'],
+         ];
+        return array_merge($translations , $main);
     }
 }

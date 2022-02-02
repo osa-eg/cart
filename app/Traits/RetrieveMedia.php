@@ -14,14 +14,14 @@ Trait RetrieveMedia
 
     public function getImageAttribute() :string
     {
-        $media = $this->getMedia('image')->first();
+        $media = $this->getFirstMedia('images');
         $url = ($media)?$media->getUrl(): '';
         return $url;
     }
 
     public function getThumbAttribute() :string
     {
-        $media = $this->getMedia('image')->first();
+        $media = $this->getFirstMedia('images');
         $url = ($media)?$media->getUrl('thumb'): '';
         return $url;
     }

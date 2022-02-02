@@ -7,7 +7,7 @@ if(!function_exists('set_avatar')){
         $rtl = (strlen($name) != strlen(utf8_decode($name)))? true : false;
         $ava = new \Laravolt\Avatar\Avatar();
         $ava->applyTheme(['rtl'=>$rtl]);
-        $ava->create($name)->setFont(public_path('fonts/Tajawal-Medium.ttf'))->setBackground($backgrounds[random_int(0,14)])->save(public_path($path));
+        $ava->create($name)->setFont(public_path('fonts/Tajawal-Medium.ttf'))->setBackground($backgrounds[random_int(0,14)])->setDimension(220)->setFontSize(120)->save(public_path($path));
         return $path;
     }
 }

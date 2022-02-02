@@ -48,6 +48,6 @@ class UniqeInTranslations implements Rule
      */
     public function message()
     {
-        return __('main.alerts.notUnique');
+        return __('alerts.notUnique');
     }
 }

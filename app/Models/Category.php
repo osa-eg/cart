@@ -4,21 +4,23 @@ namespace App\Models;
 
 use App\Traits\LangVal;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
 
-class Category extends Model implements TranslatableContract
+class Category extends BaseModel implements TranslatableContract
 {
     use HasFactory,
         Translatable,
         LangVal;
     protected $guarded = ['id'];
     public $translatedAttributes = ['name','slug'];
-    protected $with = ['children'];
+    public $timestamps = false;
+    protected $casts = [
+      'active'=>'boolean'
+    ];
 
 
     public function parent() : BelongsTo
@@ -32,6 +34,10 @@ class Category extends Model implements TranslatableContract
         return $this->hasMany(self::class,'parent_id');
     }
 
+    public function children_products()
+    {
+        return $this->hasManyThrough(Product::class,self::class,'parent_id','category_id');
+    }
 
     /**
      * @param $q
@@ -50,6 +56,14 @@ class Category extends Model implements TranslatableContract
     {
         return $q->whereNotNull('parent_id');
     }
+    /**
+     * @param $q
+     * @return mixed
+     */
+    public function scopeActive($q)
+    {
+        return $q->where('active',1);
+    }
 
 
     public function products() : HasMany
@@ -58,10 +72,16 @@ class Category extends Model implements TranslatableContract
     }
 
 
+    public function getAllColumnsAttribute() : array
+    {
+        return array_values(\Schema::getColumnListing($this->tableName()));
+    }
+
     public function getDeletableAttribute() :Bool
     {
-        return !$this->products()->count();
+        return !($this->children()->count() || $this->products()->count());
     }
+
 
 
 }

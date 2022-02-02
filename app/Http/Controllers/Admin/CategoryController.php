@@ -14,9 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::with('children','translations:name ')->withCount('products')->when(\request()->name, function ($q) {
+        $data = Category::when(\request()->name, function ($q) {
             $q->whereTranslationLike('name','%'.$_GET['name'].'%');
-        })->orderByTranslation('name')->paginate();
+        })->orderBy('parent_id','asc')->withCount(['children','products'])->paginate();
         return view('admin.categories.index',compact('data'));
     }
 
@@ -46,7 +46,13 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('admin.categories.show',compact('category'));
+        $products   = $category->products()->when(request()->product_name,function ($q){
+               $q->whereTranslationLike('name','%'.request()->product_name.'%');
+        })->paginate(15,['*'],'products');
+        $children   = $category->children()->when(request()->child_name,function ($q){
+              $q->whereTranslationLike('name','%'.request()->child_name.'%');
+        })->withCount('products')->paginate(15,['*'],'children');
+        return view('admin.categories.show',compact('category','children', 'products'));
     }
 
 

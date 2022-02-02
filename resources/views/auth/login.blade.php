@@ -19,14 +19,14 @@
                                     @csrf
                                     <div class="form-group">
                                         <label>{{__('main.email')}}</label>
-                                        <input name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{__('main.enter_email')}}" type="email" value="{{old('username')}}" required>
+                                        <input name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{__('main.enter_email')}}" type="email" value="{{old('email','admin@app.com')}}" required>
                                         @error('email')
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>{{__('main.password')}}</label>
-                                        <input name="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{__('main.enter_password')}}" type="password" value="{{old('password')}}" required>
+                                        <input name="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{__('main.enter_password')}}" type="password" value="{{old('password','123456789')}}" required>
                                         @error('password')
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror

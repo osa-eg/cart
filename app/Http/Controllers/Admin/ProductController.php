@@ -14,9 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = Product::with('category','translation')->parents()->when(\request()->name, function ($q) {
+        $data = Product::with('category','translation')->when(\request()->name, function ($q) {
             $q->whereTranslationLike('name','%'.$_GET['name'].'%');
-        })->orderByTranslation('name')->paginate();
+        })->latest('id')->paginate();
         return view('admin.products.index',compact('data'));
     }
 
@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Product::parents()->with('children')->get();
+        $categories = Category::parents()->with('children')->get();
         return view('admin.products.create',compact('categories'));
     }
 
@@ -35,48 +35,63 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        Product::create($request->validated());
+        if ($product = Product::create($request->validated()) ){
+            if ($request->hasFile('images')) {
+                $product->addMultipleMediaFromRequest(['images'])
+                    ->each(function ($fileAdder) {
+                        $fileAdder->toMediaCollection('images');
+                    });
+            }
+        }
         success();
         return back();
     }
 
     /**
-     * @param Category $product
+     * @param Product $product
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Category $product)
+    public function show(Product $product)
     {
         return view('admin.products.show',compact('product'));
     }
 
 
     /**
-     * @param Category $product
+     * @param Product $product
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Category $product)
+    public function edit(Product $product)
     {
-        $categories = Product::parents()->with('children')->get();
+        $categories = Category::parents()->with('children')->get();
         return view('admin.products.edit',compact('product','categories'));
     }
 
     /**
      * @param ProductRequest $request
-     * @param Category $product
+     * @param Product $product
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProductRequest $request, Category $product)
+    public function update(ProductRequest $request, Product $product)
     {
         $product->update($request->validated());
+        if ($request->hasFile('images')) {
+            $product->clearMediaCollection('images');
+            $product->addMultipleMediaFromRequest(['images'])
+                ->each(function ($fileAdder) {
+                    $fileAdder->toMediaCollection('images');
+                });
+        }
         updated();
         return back();
     }
 
 
     /**
-     * @param Category $product
+     * @param Product $product
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Category $product)
+    public function destroy(Product $product)
     {
         if ($product->deletable && $product->delete())
             deleted();
