@@ -92,5 +92,12 @@
         </div>
     </div>
 @stop
+@push('css')
+    <style>
+        table tbody tr td{
+            vertical-align: middle !important;
+        }
+    </style>
+@endpush
 @push('js')
 @endpush
