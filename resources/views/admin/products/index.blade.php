@@ -55,7 +55,7 @@
                                 @forelse($data as $item)
                                     <tr>
                                         <td>{{$loop->iteration}} </td>
-                                        <td><img src="{{$item->thumb}}" class="img-thumbnail  rounded-circle " style="width:60px ; height:60px " alt=""></td>
+                                        <td><img src="{{$item->thumb}}" class="img-thumbnail  rounded-circle shadow-sm" style="width:60px ; height:60px " alt=""></td>
                                         <td class="text-sm">{{$item->name}}</td>
                                         <td class="text-sm">{{$item->category->name}}</td>
                                         <td class="text-sm">{{$item->qty}}</td>
