@@ -46,6 +46,8 @@
                                     <th>{{__('keys.qty')}}</th>
                                     <th>{{__('keys.price')}}</th>
                                     <th>{{__('keys.status')}}</th>
+                                    <th>{{__('keys.created_at')}}</th>
+                                    <th>{{__('keys.updated_at')}}</th>
                                     <th>{{__('keys.action')}}</th>
                                 </tr>
                                 </thead>
@@ -53,12 +55,14 @@
                                 @forelse($data as $item)
                                     <tr>
                                         <td>{{$loop->iteration}} </td>
-                                        <td><img src="{{$item->thumb}}" class="img-thumbnail img-sm image rounded-circle" alt=""></td>
+                                        <td><img src="{{$item->thumb}}" class="img-thumbnail  rounded-circle " style="width:150px " alt=""></td>
                                         <td class="text-sm">{{$item->name}}</td>
                                         <td class="text-sm">{{$item->category->name}}</td>
                                         <td class="text-sm">{{$item->qty}}</td>
                                         <td class="text-sm">{{$item->price}}</td>
                                         <td class="text-sm">{!! $item->active?"<span class='badge badge-success'>".__('keys.active')."</span>":"<span class='badge badge-secondary'>".__('keys.inactive')."</span>" !!}</td>
+                                        <td class="text-sm">{{$item->created_at->format('Y-m-d')}}</td>
+                                        <td class="text-sm">{{$item->updated_at->format('Y-m-d')}}</td>
                                         <td class="text-sm">
                                             <a href="{{route('product.show',$item)}}" class="mx-1" title="{{__('btn.show')}} ">
                                                 <i class="fas fa-eye text-primary"></i>
