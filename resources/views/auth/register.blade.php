@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{__('main.conf_password')}}</label>
-                                        <input name="password-confirmation" class="form-control " placeholder="{{__('main.re_enter_password')}}" type="password" value="{{old('password',123456789)}}" required>
+                                        <input name="password_confirmation" class="form-control " placeholder="{{__('main.re_enter_password')}}" type="password" value="{{old('password',123456789)}}" required>
                                     </div>
                                     <div class="form-group text-center">
                                         <input type="submit" class="btn btn-main-primary " value="{{ __('main.register') }}">

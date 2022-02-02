@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use App\Models\Product;
+use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $data = Product::with('category','translation')->parents()->when(\request()->name, function ($q) {
+        $data = Category::with('children','translations:name ')->withCount('products')->when(\request()->name, function ($q) {
             $q->whereTranslationLike('name','%'.$_GET['name'].'%');
         })->orderByTranslation('name')->paginate();
-        return view('admin.products.index',compact('data'));
+        return view('admin.categories.index',compact('data'));
     }
 
     /**
@@ -25,60 +25,60 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Product::parents()->with('children')->get();
-        return view('admin.products.create',compact('categories'));
+        $categories = Category::parents()->get();
+        return view('admin.categories.create',compact('categories'));
     }
 
     /**
-     * @param ProductRequest $request
+     * @param CategoryRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(ProductRequest $request)
+    public function store(CategoryRequest $request)
     {
-        Product::create($request->validated());
+        Category::create($request->validated());
         success();
         return back();
     }
 
     /**
-     * @param Category $product
+     * @param Category $category
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Category $product)
+    public function show(Category $category)
     {
-        return view('admin.products.show',compact('product'));
+        return view('admin.categories.show',compact('category'));
     }
 
 
     /**
-     * @param Category $product
+     * @param Category $category
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Category $product)
+    public function edit(Category $category)
     {
-        $categories = Product::parents()->with('children')->get();
-        return view('admin.products.edit',compact('product','categories'));
+        $categories = Category::parents()->get();
+        return view('admin.categories.edit',compact('category','categories'));
     }
 
     /**
-     * @param ProductRequest $request
-     * @param Category $product
+     * @param CategoryRequest $request
+     * @param Category $category
      */
-    public function update(ProductRequest $request, Category $product)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $product->update($request->validated());
+        $category->update($request->validated());
         updated();
         return back();
     }
 
 
     /**
-     * @param Category $product
+     * @param Category $category
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Category $product)
+    public function destroy(Category $category)
     {
-        if ($product->deletable && $product->delete())
+        if ($category->deletable && $category->delete())
             deleted();
         else
             cant_deleted();

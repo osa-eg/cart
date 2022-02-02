@@ -58,4 +58,10 @@ class Category extends Model implements TranslatableContract
     }
 
 
+    public function getDeletableAttribute() :Bool
+    {
+        return !$this->products()->count();
+    }
+
+
 }
