@@ -45,8 +45,8 @@
                                 <p class="alert alert-danger"> {{__('product.not_available')}}</p>
                             </div>
                             <div class="product-buttons">
-                                <a class="btn btn-solid product_available pointer" id="vAddToCart" data-id="{{$product->id}}">{{__('btn.add_to_cart')}}</a>
-                                <a href="" class="btn btn-solid">{{__('btn.show_details')}}</a>
+                                <a class="btn btn-solid product_available pointer" id="vAddToCart" data-id="">{{__('btn.add_to_cart')}}</a>
+                                <a href="" id="vShowDetails" class="btn btn-solid">{{__('btn.show_details')}}</a>
                             </div>
                         </div>
                     </div>

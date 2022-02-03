@@ -52,16 +52,14 @@
                                     <li>
                                         <a href="#">{{__('front.shop')}}</a>
                                         <ul>
-                                           @foreach(\App\Models\Category::parents()->with('children')->withCount('children')->get() as $category)
+                                           @foreach(\App\Models\Category::whereHas('children')->with('children')->with('children.products')->withCount('children')->get() as $category)
                                             <li>
                                                 <a href="#">{{$category->name}}</a>
-                                                @if($category->children_count)
                                                 <ul>
-                                                    @foreach($category->children as $child)
-                                                    <li><a href="#">{{$child->name}}</a></li>
+                                                    @foreach($category->children()->whereHas('products')->get() as $child)
+                                                    <li><a href="{{route('category.products',$child->slug)}}">{{$child->name}}</a></li>
                                                     @endforeach
                                                 </ul>
-                                                @endif
                                             </li>
                                             @endforeach
                                         </ul>
@@ -72,7 +70,7 @@
                     </div>
                     <div class="absolute-logo">
                         <div class="brand-logo">
-                            <a href="#"><img alt="" src="{{asset('logo/logo_'.app()->getLocale().'.png')}}"></a>
+                            <a href="{{url('/')}}"><img alt="" src="{{asset('logo/logo_'.app()->getLocale().'.png')}}"></a>
                         </div>
                     </div>
                     <div class="">

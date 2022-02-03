@@ -21,7 +21,10 @@ use App\Http\Controllers\Ajax\{
 |--------------------------------------------------------------------------
 */
 Route::middleware('lang')->group(function (){
-    Route::get('/', [SitePageController::class,'landing']    );
+    Route::get('/', [SitePageController::class,'landing']);
+    Route::get('categories/{slug}/products', [SitePageController::class,'category'])->name('category.products');
+    Route::get('products/{slug}', [SitePageController::class,'product'])->name('product_details');
+
     Route::get('home', function () {
         if (auth()->user()->hasRole('admin'))
             return (new \App\Http\Controllers\Admin\AdminController())->index();

@@ -125,8 +125,9 @@
             $('#vPrice').text(product.price);
             $('#vDescription').html(product.description);
             $('#vPlus').attr('data-max',product.qty);
+            $('#vAddToCart').attr('data-id',product.id);
             $('#vQtyInput').attr('max',product.qty);
-            $('#vShowDetails').attr('href','{{url('category/')}}/'+product.slug);
+            $('#vShowDetails').attr('href','{{url('products/')}}/'+product.slug);
             if(product.qty > 0) {
                 $('.product_available').show();
                 $('.product_not_available').hide();
@@ -141,6 +142,8 @@
         let id  = $(this).data('id');
         let qty = $('#qtyInput').val();
         addToCart(id,qty);
+        $('#qtyInput').val(0);
+
     });
     function addToCart(id , qty = 1)
     {

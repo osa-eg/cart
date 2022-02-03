@@ -16,9 +16,9 @@
                 <i class="ti-shopping-cart"></i>
             </button>
             @endif
-            <a href="javascript:void(0)" title="{{__('keys.add_to_wishlist')}}">
-                <i  class="ti-heart" aria-hidden="true"></i>
-            </a>
+{{--            <a href="javascript:void(0)" title="{{__('keys.add_to_wishlist')}}">--}}
+{{--                <i  class="ti-heart" aria-hidden="true"></i>--}}
+{{--            </a>--}}
             <a  class="showProduct pointer"  data-id="{{$product->id}}"  title="{{__('btn.quick_view')}}">
                 <i class="ti-search" aria-hidden="true"></i>
             </a>
