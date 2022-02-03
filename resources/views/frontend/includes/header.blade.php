@@ -13,10 +13,10 @@
                 </div>
                 <div class="col-lg-6 text-end">
                     <ul class="header-dropdown">
-                        <li class="mobile-wishlist">
-                            <a href="#"><i class="fa fa-heart" aria-hidden="true"></i>
-                            {{__('front.wishlist')}}
-                            </a></li>
+{{--                        <li class="mobile-wishlist">--}}
+{{--                            <a href="#"><i class="fa fa-heart" aria-hidden="true"></i>--}}
+{{--                            {{__('front.wishlist')}}--}}
+{{--                            </a></li>--}}
                         <li class="onhover-dropdown mobile-account"><i class="fa fa-user" aria-hidden="true"></i>
                             {{__('front.my_account')}}
                             <ul class="onhover-show-div">
@@ -111,7 +111,7 @@
                                                 <ul>
                                                     @foreach(config('settings.locales',['ar','en']) as $lang)
                                                     <li @if(app()->getLocale() == $lang) class="active" @endif >
-                                                        <a href="{{route('changeLocale',$lang)}}">{{__("lang-{$lang}")}}</a>
+                                                        <a href="{{route('changeLocale',$lang)}}">{{__("lang.{$lang}")}}</a>
                                                     </li>
                                                     @endforeach
                                                 </ul>

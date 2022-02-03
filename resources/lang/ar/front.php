@@ -12,6 +12,6 @@ return array (
   'search_a_product' => 'بحث عن أحد المنتجات',
   'shop' => 'المتجر',
   'trending_products' => 'أحدث المنتجات',
-  'welcome_to_our_store' => 'مرحبا بك فقي متجرنا',
+  'welcome_to_our_store' => 'مرحبا بك في متجرنا',
   'wishlist' => 'المفضلة',
 );
