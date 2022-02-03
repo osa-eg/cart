@@ -176,8 +176,12 @@
     function updateHeaderCart (cart){
         let headerCart = $('#header_cart');
         headerCart.empty();
-        $.each(cart.items , function (id , item){
-            var cart_item = `<li class="cart_el">
+        if (cart.items.length() > 0){
+         let empty_item = `<li class="cart_el"> <p class="alert alert-secondary text-center"> {{__('cart.no_products_added')}} </p></li>`;
+            headerCart.append(empty_item);
+        }else {
+            $.each(cart.items, function (id, item) {
+                var cart_item = `<li class="cart_el">
                                     <div class="media">
                                         <a href="#">
                                             <img class="me-3" src="${item.image}" alt="image"></a>
@@ -192,9 +196,9 @@
                                         <a href="#" class="removeCartItem'" onclick="removeCartItem(${id})" id="removeHeaderCartItem${id}')" data-id="${id}"><i class="fa fa-times"  aria-hidden="true"></i></a>
                                     </div>
                                 </li>`;
-            headerCart.append(cart_item);
-        });
-        let cart_total = ` <li>
+                headerCart.append(cart_item);
+            });
+        }let cart_total = ` <li>
                 <div class="total">
                     <h6>{{__('cart.total')}} :
                         <span class="cartSubTotalPrice"> $ ${cart.subTotalPrice} </span>
