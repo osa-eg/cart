@@ -6,7 +6,7 @@ return array (
   'back' => 'عودة',
   'block' => 'حجب',
   'cancel' => 'إلعاء',
-  'checkout' => 'إرسال الطلب',
+  'checkout' => 'إتمام الشراء',
   'clear_search' => 'مسح البحث',
   'confirm_password' => 'تأكيد كلمة المرور',
   'continue_shopping' => 'متابعة التسوق',
