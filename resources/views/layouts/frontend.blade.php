@@ -176,8 +176,8 @@
     function updateHeaderCart (cart){
         let headerCart = $('#header_cart');
         headerCart.empty();
-        if (cart.items.length > 0){
-         let empty_item = `<li class="cart_el"> <p class="alert alert-secondary text-center"> {{__('cart.no_products_added')}} </p></li>`;
+        if (cart.items.length <= 0){
+         let empty_item = `<li class="cart_el"> <p class="alert d-block w-100 alert-secondary text-center"> {{__('cart.no_products_added')}} </p></li>`;
             headerCart.append(empty_item);
         }else {
             $.each(cart.items, function (id, item) {
