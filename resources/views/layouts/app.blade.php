@@ -253,7 +253,7 @@
     <!-- Footer opened -->
     <div class="main-footer ht-40">
         <div class="container-fluid pd-t-0-f ht-100p">
-            <span>Copyright © {{date('Y')}} <a href="#">Kr8vSolutions</a>. Developed by  <a href="https://www.kr8vsolutions.com/" target="_blank">Kr8v Solutions</a> All rights reserved.</span>
+            <span>Copyright © {{date('Y')}} <a href="#">Osama Saad</a>. Developed by  Osama Saad @ All rights reserved.</span>
         </div>
     </div>
     <!-- Footer closed -->

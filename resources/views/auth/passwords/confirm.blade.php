@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row no-gutter justify-content-center">
             <!-- The image half -->
-            <div class="col-md-4 col-lg-4 col-xl-4 d-md-flex bg-primary-transparent py-3 pb-5">
+            <div class="col-md-4 col-lg-4 col-xl-4 d-md-flex bg-white py-3 pb-5">
                 <div class="row wd-100p mx-auto ">
                     <div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
                         <div class="card-sigin">
