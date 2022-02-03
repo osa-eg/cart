@@ -35,10 +35,7 @@
                 <div class="main-menu">
                     <div class="menu-left around-border">
                         <div class="navbar d-xl-none">
-                            <a href="javascript:void(0)" onclick="openNav()">
-                                <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
-                                </div>
-                            </a>
+
                         </div>
                         <div class="main-menu-right">
                             <nav id="main-nav">
