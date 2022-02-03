@@ -134,7 +134,7 @@
                                                         <li class="cart_el">
                                                             <div class="media">
                                                                 <a href="#">
-                                                                    <img class="me-3" src="{{$item['image']}}" alt="image"></a>
+                                                                    <img class="me-3"  src="{{$item['image']}}" alt="image"></a>
                                                                 <div class="media-body">
                                                                     <a href="#">
                                                                         <h4>{{$item['name_'.app()->getLocale()]}}</h4>
