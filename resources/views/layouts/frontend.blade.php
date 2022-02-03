@@ -187,7 +187,7 @@
                                             <img class="me-3" src="${item.image}" alt="image"></a>
                                         <div class="media-body">
                                             <a href="#">
-                                                <h4>${item.name}'}</h4>
+                                                <h4>${item.name}'</h4>
                                             </a>
                                             <h4><span class="headerQty${id}">${item.qty} </span> <small>x</small> <span>  $${item.price} </h4>
                                         </div>
