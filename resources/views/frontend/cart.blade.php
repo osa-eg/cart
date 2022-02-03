@@ -53,7 +53,7 @@
                                 <th scope="col">{{__('keys.name')}}</th>
                                 <th scope="col">{{__('keys.unit_price')}}</th>
                                 <th scope="col" style="width: 120px">{{__('keys.qty')}}</th>
-                                <th scope="col">{{__('keys.total')}}</th>
+                                <th scope="col">{{__('cart.sub_total')}}</th>
                                 <th scope="col">{{__('btn.delete')}}</th>
 
                             </tr>
