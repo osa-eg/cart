@@ -129,8 +129,8 @@
                                                 <i class="ti-shopping-cart"></i>
                                             </div>
                                             <ul class="show-div shopping-cart" id="header_cart">
-                                                @if(session()->has('cart'))
-                                                    @foreach (session('cart')->items as $id => $item)
+                                                @if(session()->has('cart') && $items = session('cart')->items)
+                                                    @foreach ($items as $id => $item)
                                                         <li class="cart_el">
                                                             <div class="media">
                                                                 <a href="#">
