@@ -79,9 +79,6 @@
 @include('frontend.includes.footer')
 <!-- footer end -->
 
-<!-- product modal popup start-->
-@include('frontend.includes.product_modal')
-<!-- product modal popup end-->
 
 
 
@@ -120,7 +117,7 @@
 <script>
     $('.showProduct').click(function (){
         let id = $(this).data('id');
-        $.get(`{{url('ajax/product_details')}}/${id}`).done(function( data ) {
+        $.get(`{{url('ajax_product_details')}}/${id}`).done(function( data ) {
             let product = data.data;
             $('#vImage').attr('src',product.image);
             $('#vName').text(product.name);
@@ -148,7 +145,7 @@
     function addToCart(id , qty = 1)
     {
 
-        $.get(`{{url('ajax/cart/add')}}/${id}/${qty}`)
+        $.get(`{{url('cart/add')}}/${id}/${qty}`)
         .done( (response) => {
             if(!response.success){
                 notify(response.message,'error','fa fa-times');
@@ -163,7 +160,7 @@
 
     function removeCartItem(id)
     {
-        $.get(`{{url('ajax/cart/delete')}}/${id}`)
+        $.get(`{{url('cart/delete')}}/${id}`)
         .done( (response) => {
             if(!response.success){
                 notify(response.message,'error','fa fa-times');
@@ -210,7 +207,7 @@
             </li>
             <li>
                 <div class="buttons">
-                    <a href="#" class="view-cart"> {{__('cart.show_cart')}} </a>
+                    <a href="{{route('cart')}}" class="view-cart"> {{__('cart.show_cart')}} </a>
                     <a href="#" class="checkout">{{__('cart.checkout')}}</a>
                 </div>
             </li>`;

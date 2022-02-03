@@ -30,18 +30,16 @@ Route::middleware('lang')->group(function (){
 
 
     Route::prefix('cart')->group(function () {
-        Route::get('/', [CartController::class,'show']);
-        Route::get('empty', [CartController::class,'empty']);
+        Route::get('/', [CartController::class,'show'])->name('cart');
+        Route::get('empty', [CartController::class,'empty'])->name('cart.empty');
+
+        Route::get('add/{product}/{qty?}',AddProductToCartController::class);
+        Route::get('update/{product}/{qty?}',UpdateProductInCartController::class);
+        Route::get('delete/{product}',DeleteProducFromCartController::class)->name('cart.delete_item');
+
     });
     // all routes of ajax requests.
-    Route::prefix('ajax')->group(function (){
-        Route::get('product_details/{product}',GetProductDetailsController::class);
-        Route::prefix('cart')->group(function (){
-            Route::get('add/{product}/{qty?}',AddProductToCartController::class);
-            Route::get('update/{product}/{qty?}',UpdateProductInCartController::class);
-            Route::get('delete/{product}',DeleteProducFromCartController::class);
-        });
-    });
+    Route::get('ajax_product_details/{product}',GetProductDetailsController::class);
 
 
 

@@ -86,6 +86,11 @@
     </div>
 
     <!-- slider and product -->
+
+
+    <!-- product modal popup start-->
+    @include('frontend.includes.product_modal')
+    <!-- product modal popup end-->
 @stop
 @push('js')
 
