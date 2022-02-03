@@ -184,7 +184,7 @@
                 var cart_item = `<li class="cart_el">
                                     <div class="media">
                                         <a href="#">
-                                            <img class="me-3" src="${item.image}" alt="image"></a>
+                                            <img class="me-3 wd-30" src="${item.image}" alt="image" ></a>
                                         <div class="media-body">
                                             <a href="#">
                                                 <h4>${item.name}'</h4>
