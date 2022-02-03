@@ -41,7 +41,7 @@
 
 
                             <h6 class="price">{{__('keys.price')}}: <span class="h3 ml-2">{{$product->price}}$</span></h6>
-                            <h6 class="price">{{__('keys.qty')}}: <span class="h3 ml-2">{{$product->price}}$</span></h6>
+                            <h6 class="price">{{__('keys.qty')}}: <span class="h3 ml-2">{{$product->qty}}</span></h6>
                             <div class="product-description">{!! $product->description !!} </div>
                             <table class="table table-striped mt-4">
                                 <tr>

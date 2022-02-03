@@ -7,13 +7,15 @@
         <div class="front  position-relative">
 
             <a href="#">
-                <img src="{{asset('front/assets/images/electronics/pro/1.jpg')}}"  class="img-fluid blur-up lazyload bg-img" alt="">
+                <img src="{{$product->thumb}}"  class="img-fluid blur-up lazyload bg-img" alt="">
             </a>
         </div>
         <div class="cart-info cart-wrap">
-            <button data-bs-toggle="modal" data-bs-target="#addtocart"  title="{{__('keys.add_to_cart')}}">
+            @if($product->qty > 0)
+            <button type="button" onclick="addToCart({{$product->id}})"  title="{{__('keys.add_to_cart')}}">
                 <i class="ti-shopping-cart"></i>
             </button>
+            @endif
             <a href="javascript:void(0)" title="{{__('keys.add_to_wishlist')}}">
                 <i  class="ti-heart" aria-hidden="true"></i>
             </a>

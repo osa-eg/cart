@@ -129,14 +129,42 @@
                                                 <i class="ti-shopping-cart"></i>
                                             </div>
                                             <ul class="show-div shopping-cart">
-                                                <li>
-                                                   <p class="alert alert-warning text-center">{{__('front.no_cart_items')}}</p>
-                                                </li>
+                                                @if(session()->has('cart'))
+                                                    @foreach (session('cart')->items as $id => $item)
+                                                        <li class="cart_el">
+                                                            <div class="media">
+                                                                <a href="#">
+                                                                    <img class="me-3" src="{{$item['image']}}" alt="image"></a>
+                                                                <div class="media-body">
+                                                                    <a href="#">
+                                                                        <h4>{{$item['name_'.app()->getLocale()]}}</h4>
+                                                                    </a>
+                                                                    <h4><span class="headerQty{{$id}}">{{$item['qty'] }} </span> <small>x</small> <span>  ${{$item['price']}} </h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="close-circle">
+                                                                <a href="#" onclick="$('#removeCartItem{{$id}}').submit()"><i class="fa fa-times"  aria-hidden="true"></i></a>
+                                                                <form action="#" id="removeCartItem{{$id}}" method="post" hidden>@csrf</form>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                @else
+                                                    <li class="cart_el">
+                                                        <p class="alert alert-secondary text-center">
+                                                            {{__('cart.no_products_added')}}
+                                                        </p>
+
+                                                    </li>
+                                                @endif
                                                 <li>
                                                     <div class="total">
-                                                        <h5>{{__('cart.total')}} : <span>0.00</span></h5>
+                                                        <h6>{{__('cart.total')}} :
+                                                            <span class="cartSubTotalPrice">  {{session('cart')?session('cart')->subTotalPrice:0}} </span>
+                                                        </h6>
                                                     </div>
                                                 </li>
+
+
                                                 <li>
                                                     <div class="buttons">
                                                         <a href="#" class="view-cart"> {{__('cart.show_cart')}} </a>
