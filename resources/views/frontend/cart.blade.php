@@ -30,7 +30,9 @@
     <!--section start-->
     <section class="cart-section section-b-space">
         <div class="container">
-            @if($cart->items)
+            @include('includes.alerts')
+
+        @if($cart->items)
                 <div class="row mb-4 border-bottom">
                     <div class="col-12 ">
                         <div class="cart_counter">
