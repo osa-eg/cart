@@ -128,7 +128,7 @@
                                                 <img alt="" src="{{asset('front/assets/images/icon/layout4/cart.png')}}"  class="img-fluid blur-up lazyload">
                                                 <i class="ti-shopping-cart"></i>
                                             </div>
-                                            <ul class="show-div shopping-cart">
+                                            <ul class="show-div shopping-cart" id="header_cart">
                                                 @if(session()->has('cart'))
                                                     @foreach (session('cart')->items as $id => $item)
                                                         <li class="cart_el">
@@ -143,8 +143,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="close-circle">
-                                                                <a href="#" onclick="$('#removeCartItem{{$id}}').submit()"><i class="fa fa-times"  aria-hidden="true"></i></a>
-                                                                <form action="#" id="removeCartItem{{$id}}" method="post" hidden>@csrf</form>
+                                                                <a href="#" onclick="removeCartItem({{$id}})"><i class="fa fa-times"  aria-hidden="true"></i></a>
                                                             </div>
                                                         </li>
                                                     @endforeach

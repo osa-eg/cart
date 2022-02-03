@@ -34,6 +34,7 @@ class Cart
         // if not : it will be added.
 
         $item = [
+            'name'      => $product->name,
             'name_en'   => $product->getTranslation('en')->name,
             'name_ar'   => $product->getTranslation('ar')->name,
             'price'     => $product->price,

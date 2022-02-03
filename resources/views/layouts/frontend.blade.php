@@ -134,7 +134,6 @@
                 $('.product_available').hide();
                 $('.product_not_available').show();
             }
-            console.log(product);
             $('#quick-view').modal('show');
         });
     });
@@ -145,15 +144,108 @@
     });
     function addToCart(id , qty = 1)
     {
+
         $.get(`{{url('ajax/cart/add')}}/${id}/${qty}`)
-        .done( (res) => {
-            console.log(res);
-            if(!data.success){
-                alert(data.message);
+        .done( (response) => {
+            if(!response.success){
+                notify(response.message,'error','fa fa-times');
             }else{
-                console.log(data.cart);
+                let cart = response.cart;
+                updateHeaderCart(cart);
+                notify(response.message)
+                $('#quick-view').modal('hide');
             }
         })
+    }
+
+    function removeCartItem(id)
+    {
+        $.get(`{{url('ajax/cart/delete')}}/${id}`)
+        .done( (response) => {
+            if(!response.success){
+                notify(response.message,'error','fa fa-times');
+            }else{
+                let cart = response.cart;
+                updateHeaderCart(cart);
+                notify(response.message)
+            }
+        })
+    }
+
+
+    function updateHeaderCart (cart){
+        let headerCart = $('#header_cart');
+        headerCart.empty();
+        $.each(cart.items , function (id , item){
+            var cart_item = `<li class="cart_el">
+                                    <div class="media">
+                                        <a href="#">
+                                            <img class="me-3" src="${item.image}" alt="image"></a>
+                                        <div class="media-body">
+                                            <a href="#">
+                                                <h4>${item.name}'}</h4>
+                                            </a>
+                                            <h4><span class="headerQty${id}">${item.qty} </span> <small>x</small> <span>  $${item.price} </h4>
+                                        </div>
+                                    </div>
+                                    <div class="close-circle">
+                                        <a href="#" class="removeCartItem'" onclick="removeCartItem(${id})" id="removeHeaderCartItem${id}')" data-id="${id}"><i class="fa fa-times"  aria-hidden="true"></i></a>
+                                    </div>
+                                </li>`;
+            headerCart.append(cart_item);
+        });
+        let cart_total = ` <li>
+                <div class="total">
+                    <h6>{{__('cart.total')}} :
+                        <span class="cartSubTotalPrice"> $ ${cart.subTotalPrice} </span>
+                    </h6>
+                </div>
+            </li>
+            <li>
+                <div class="buttons">
+                    <a href="#" class="view-cart"> {{__('cart.show_cart')}} </a>
+                    <a href="#" class="checkout">{{__('cart.checkout')}}</a>
+                </div>
+            </li>`;
+        headerCart.append(cart_total);
+    }
+
+    function notify(message, type = 'success', icon='fa fa-check'){
+        $.notify({
+            icon: icon,
+            title: '',
+            message: message
+        }, {
+            element: 'body',
+            position: null,
+            type: type,
+            allow_dismiss: true,
+            newest_on_top: false,
+            showProgressbar: true,
+            placement: {
+                from: "top",
+                align: "right"
+            },
+            offset: 20,
+            spacing: 10,
+            z_index: 1031,
+            delay: 5000,
+            animate: {
+                enter: 'animated fadeInDown',
+                exit: 'animated fadeOutUp'
+            },
+            icon_type: 'class',
+            template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                '<button type="button" aria-hidden="true" class="btn-close" data-notify="dismiss"></button>' +
+                '<span data-notify="icon"></span> ' +
+                '<span data-notify="title">{1}</span> ' +
+                '<span data-notify="message">{2}</span>' +
+                '<div class="progress" data-notify="progressbar">' +
+                '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                '</div>' +
+                '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                '</div>'
+        });
     }
 </script>
 </body>

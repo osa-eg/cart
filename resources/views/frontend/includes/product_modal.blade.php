@@ -15,7 +15,7 @@
                         <div class="product-right">
                             <h2 id="vName"></h2>
                             <h3>$ <span  id="vPrice"></span></h3>
-                            <p id="vCategory" class="badge-theme-color px-1"></p>
+                            <p id="vCategory" class="badge-theme-color px-2 py-1 d-inline rounded"></p>
                             <div class="border-product">
                                 <h6 class="product-title">{{__('front.product_details')}}</h6>
                                 <div id="vDescription"></div>
