@@ -6,7 +6,7 @@
 
         <div class="front  position-relative">
 
-            <a href="#">
+            <a href="{{route('product_details',$product->slug)}}">
                 <img src="{{$product->thumb}}"  class="img-fluid blur-up lazyload bg-img" alt="">
             </a>
         </div>
