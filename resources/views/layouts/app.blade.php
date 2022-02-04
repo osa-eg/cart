@@ -14,7 +14,7 @@
     <title> {{$title??'لوحة التحكم'}} </title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('logo.png')}}" type="image/x-icon"/>
+    <link rel="icon" href="{{asset('logo/logo_'.app()->getLocale().'.png')}}" type="image/x-icon"/>
 
     <!-- Icons css -->
     <link href="{{asset('backend/assets/css/icons.css')}}" rel="stylesheet">
@@ -95,10 +95,10 @@
             <div class="container-fluid ">
                 <div class="main-header-left ">
                     <div class="responsive-logo">
-                        <img src="{{asset('logo.png')}}" style="width: 90px; height: auto" class="desktop-dark">
-                        <img src="{{asset('logo.png')}}" style="width: 90px; height: auto" class="desktop-logo">
-                        <img src="{{asset('logo.png')}}" style="width: 90px; height: auto" class="desktop-logo-1">
-                        <img src="{{asset('logo.png')}}" style="width: 90px; height: auto" class="desktop-logo-dark">
+                        <img src="{{asset('logo/logo_'.app()->getLocale().'.png')}}" style="width: 90px; height: auto" class="desktop-dark">
+                        <img src="{{asset('logo/logo_'.app()->getLocale().'.png')}}" style="width: 90px; height: auto" class="desktop-logo">
+                        <img src="{{asset('logo/logo_'.app()->getLocale().'.png')}}" style="width: 90px; height: auto" class="desktop-logo-1">
+                        <img src="{{asset('logo/logo_'.app()->getLocale().'.png')}}" style="width: 90px; height: auto" class="desktop-logo-dark">
                     </div>
                     @auth
                         <div class="app-sidebar__toggle" data-toggle="sidebar">
