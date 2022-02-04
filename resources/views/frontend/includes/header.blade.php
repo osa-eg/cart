@@ -62,11 +62,11 @@
                                     <li>
                                         <a href="#">{{__('front.shop')}}</a>
                                         <ul>
-                                           @foreach(\App\Models\Category::whereHas('children')->with('children')->with('children.products')->withCount('children')->get() as $category)
+                                           @foreach(\App\Models\Category::active()->whereHas('children')->with('children')->with('children.products')->withCount('children')->get() as $category)
                                             <li>
                                                 <a href="#">{{$category->name}}</a>
                                                 <ul>
-                                                    @foreach($category->children()->whereHas('products')->get() as $child)
+                                                    @foreach($category->children()->active()->whereHas('products')->get() as $child)
                                                     <li><a href="{{route('category.products',$child->slug)}}">{{$child->name}}</a></li>
                                                     @endforeach
                                                 </ul>
