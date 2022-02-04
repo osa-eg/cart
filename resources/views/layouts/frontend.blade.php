@@ -50,6 +50,10 @@
         .cart_el .media a img{
             width: 90px !important;
         }
+        .layout7-product .product-box .details-product {
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 5px;
+        }
     </style>
     @stack('css')
 </head>
