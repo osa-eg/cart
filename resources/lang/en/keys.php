@@ -40,5 +40,6 @@ return array (
   'type' => 'type',
   'unit_price' => 'unit price',
   'updated_at' => 'last update',
+  'user' => 'user',
   'value' => 'value',
 );

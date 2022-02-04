@@ -16,18 +16,21 @@ class AddProductToCartController extends Controller
      */
     public function __invoke(Product $product, $qty = 1)
     {
-        // check product qty:
-        if ($product->qty < $qty){
+        // get cart:
+        if (session()->has('cart'))
+            $cart = new Cart(session('cart'));
+        else
+            $cart = new Cart();
+
+        // check for enough qty:
+        if (session()->has('cart') && isset($cart->items[$product->id])){
+            if ($product->qty < $qty || ($cart->items[$product->id]['qty'] + $qty) > $product->qty){
             return response([
                 'success' => false,
                 'message' => __('alerts.no_enough_qty')
             ]);
+            }
         }
-        // get cart:
-        if (session()->has('cart'))
-            $cart = new Cart(session('cart'));
-         else
-            $cart = new Cart();
 
          // insert item to cart
         $cart->add($product,$qty);

@@ -23,6 +23,9 @@ class CreateOrdersTable extends Migration
             $table->text('notes')->nullable();
             $table->boolean('done')->default(0);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+
         });
     }
 

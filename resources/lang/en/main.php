@@ -35,7 +35,7 @@ return array (
   'phone' => 'phone',
   're_enter_password' => 'Reenter password',
   'register' => 'register',
-  'select' => '',
+  'select' => 'select',
   'support' => '',
-  'welcome_back' => '',
+  'welcome_back' => 'welcome back',
 );

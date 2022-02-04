@@ -8,7 +8,8 @@ use App\Http\Controllers\Admin\{
     UserController,
     ToggleCategoryActiveController,
     ToggleProductActiveController,
-    ToggleUserActiveController
+    ToggleUserActiveController,
+    OrderController
 };
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::middleware('lang')->prefix(config('settings.admin_prefix','admin'))->grou
         'product' => ProductController::class,
     ]);
     Route::resource('user',UserController::class)->only('index','show');
+    Route::resource('order',OrderController::class)->only('index','show');
 
     Route::get('categories/{category}/toggle_active',ToggleCategoryActiveController::class)->name('category.toggle_active');
     Route::get('products/{product}/toggle_active',ToggleProductActiveController::class)->name('product.toggle_active');

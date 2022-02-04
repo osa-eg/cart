@@ -24,6 +24,7 @@
             <x-side-menu-item :name="__('category.title')" :url="route('category.index')" :icon="'icon ion-ios-cube'"></x-side-menu-item>
             <x-side-menu-item :name="__('product.title')" :url="route('product.index')" :icon="'icon ion-ios-list'"></x-side-menu-item>
             <x-side-menu-item :name="__('user.title')" :url="route('user.index')" :icon="'icon ion-ios-people'"></x-side-menu-item>
+            <x-side-menu-item :name="__('order.title')" :url="route('order.index')" :icon="'icon ion-ios-cart'"></x-side-menu-item>
 
         </ul>
     </div>

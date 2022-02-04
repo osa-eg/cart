@@ -30,24 +30,24 @@ class UserSeeder extends Seeder
         ]);
         $admin->assignRole('admin');
 
-        for ($i = 1  ; $i <= 500 ; $i++) {
-            $name = $faker->name();
-            $data[] = [
-                'name' => $name,
-                'email' => $faker->unique()->safeEmail(),
-                'phone' => $faker->phoneNumber(),
-                'email_verified_at' => now(),
-                'image' => set_avatar($name),
-                'password' =>Hash::make('123456789'), // password
-                'remember_token' => Str::random(10),
-                'created_at' => $date,
-                'updated_at' => $date,
-            ];
-        }
-        $chunks = array_chunk($data , 250);
-        foreach ($chunks as $chunk){
-            User::insert($chunk);
-        }
+//        for ($i = 1  ; $i <= 500 ; $i++) {
+//            $name = $faker->name();
+//            $data[] = [
+//                'name' => $name,
+//                'email' => $faker->unique()->safeEmail(),
+//                'phone' => $faker->phoneNumber(),
+//                'email_verified_at' => now(),
+//                'image' => set_avatar($name),
+//                'password' =>Hash::make('123456789'), // password
+//                'remember_token' => Str::random(10),
+//                'created_at' => $date,
+//                'updated_at' => $date,
+//            ];
+//        }
+//        $chunks = array_chunk($data , 250);
+//        foreach ($chunks as $chunk){
+//            User::insert($chunk);
+//        }
         $this->command->info('users seeded Successfully');
 
 

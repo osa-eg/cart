@@ -40,5 +40,6 @@ return array (
   'type' => 'النوع',
   'unit_price' => 'سعر القطعة',
   'updated_at' => 'تاريخ آخر تحديث',
+  'user' => 'المستخدم',
   'value' => 'القيمة',
 );
