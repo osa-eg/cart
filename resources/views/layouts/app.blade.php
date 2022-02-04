@@ -216,6 +216,7 @@
 
         <div class=" container-fluid pt-2">
 
+            @include('includes.alerts')
             @yield('content')
         </div>
         <!-- Container closed -->
