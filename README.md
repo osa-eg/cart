@@ -5,12 +5,24 @@
 This is a simple base e-commerce project.
 
 ### This project has:
-#Admin Dashboard:
+
+
+##Admin Dashboard:
 admin dashboard has some of main features you need to build E-commerce Project such as:
 - Category Management.
 - Products Management.
 - Users Management.
 - Orders Management.
+
+##Website :
+- homepage.
+- products.
+- categories.
+- cart.
+- checkout.
+- login.
+- register.
+
 
 ## Requirements
 - php 8.0
