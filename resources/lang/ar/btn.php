@@ -8,6 +8,7 @@ return array (
   'cancel' => 'إلعاء',
   'checkout' => 'إتمام الشراء',
   'clear_search' => 'مسح البحث',
+  'close' => 'إغلاق',
   'confirm_password' => 'تأكيد كلمة المرور',
   'continue_shopping' => 'متابعة التسوق',
   'dactivate' => 'تعطيل',

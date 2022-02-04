@@ -144,7 +144,7 @@
                     <a href="{{url('/')}}" class="btn btn-solid">{{__('btn.continue_shopping')}}</a>
                 </div>
                 @if($cart->items)
-                    <div class="col-6"><a href="#" class="btn btn-solid">{{__('btn.checkout')}}</a></div>
+                    <div class="col-6"><a href="{{route('checkout')}}" class="btn btn-solid">{{__('btn.checkout')}}</a></div>
                 @endif
             </div>
         </div>

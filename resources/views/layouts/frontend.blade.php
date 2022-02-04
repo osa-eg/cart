@@ -211,7 +211,7 @@
             <li>
                 <div class="buttons">
                     <a href="{{route('cart')}}" class="view-cart"> {{__('cart.show_cart')}} </a>
-                    <a href="#" class="checkout">{{__('cart.checkout')}}</a>
+                    <a href="{{route('checkout')}}" class="checkout">{{__('cart.checkout')}}</a>
                 </div>
             </li>`;
         headerCart.append(cart_total);

@@ -1,8 +1,9 @@
 <?php
 
 return array (
-  'cart' => '',
-  'cart_items' => '',
-  'home' => '',
-  'products' => '',
+  'cart' => 'Cart',
+  'cart_items' => 'Cart Items',
+  'checkout' => 'Checkout',
+  'home' => 'Home',
+  'products' => 'products',
 );

@@ -1,5 +1,5 @@
 <?php
 
 return array (
-  'title' => 'Products',
+  'on-delivery' => '',
 );

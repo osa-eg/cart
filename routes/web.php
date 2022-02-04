@@ -7,7 +7,9 @@ use App\Http\Controllers\{
 };
 use App\Http\Controllers\Front\{
     SitePageController,
-    CartController
+    CartController,
+    CheckoutContoller,
+    UserController
 };
 use App\Http\Controllers\Ajax\{
     GetProductDetailsController,
@@ -24,12 +26,20 @@ Route::middleware('lang')->group(function (){
     Route::get('/', [SitePageController::class,'landing']);
     Route::get('categories/{slug}/products', [SitePageController::class,'category'])->name('category.products');
     Route::get('products/{slug}', [SitePageController::class,'product'])->name('product_details');
+    Route::middleware('auth')->group(function () {
+        Route::get('checkout', [CheckoutContoller::class, 'show'])->name('checkout');
+        Route::post('checkout', [CheckoutContoller::class, 'save'])->name('checkout');
 
-    Route::get('home', function () {
-        if (auth()->user()->hasRole('admin'))
-            return (new \App\Http\Controllers\Admin\AdminController())->index();
-        return view('frontend.index');
-    })->middleware('auth');
+        Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+        Route::get('/myOrders', [UserController::class, 'orders'])->name('myOrders');
+        Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('updateProfile');
+
+        Route::get('home', function () {
+            if (auth()->user()->hasRole('admin'))
+                return (new \App\Http\Controllers\Admin\AdminController())->index();
+            return (new UserController())->index();
+        })->middleware('auth');
+    });
 
 
     Route::prefix('cart')->group(function () {

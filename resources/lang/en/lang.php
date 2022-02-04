@@ -3,4 +3,5 @@
 return array (
   'ar' => 'Arabic',
   'en' => 'English',
+  '{$lang}' => '',
 );

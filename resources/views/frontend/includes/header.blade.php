@@ -20,8 +20,21 @@
                         <li class="onhover-dropdown mobile-account"><i class="fa fa-user" aria-hidden="true"></i>
                             {{__('front.my_account')}}
                             <ul class="onhover-show-div">
+                                @guest()
                                 <li><a href="{{route('login')}}">{{__('front.login')}}</a></li>
                                 <li><a href="{{route('register')}}">{{__('front.register')}}</a></li>
+                                @else
+                                    <li class="bg-light text-center ">
+                                        {{auth()->user()->name}}
+                                    </li>
+                                    <li><a href="{{url('home')}}">{{__('dashboard.dashboard')}}</a></li>
+
+                                    <li class="text-center">
+                                    <a class="btn btn-primary-gradien" href="#" onclick="$('#logout').submit()"><i class="bx bx-log-out"></i> {{__('main.logout')}}</a>
+                                    <form action="{{route('logout')}}" class="d-none" method="post" id="logout"> @csrf </form>
+                                </li>
+
+                                @endguest
                             </ul>
                         </li>
                     </ul>
@@ -162,7 +175,7 @@
                                                 <li>
                                                     <div class="buttons">
                                                         <a href="{{route('cart')}}" class="view-cart"> {{__('cart.show_cart')}} </a>
-                                                        <a href="#" class="checkout">{{__('cart.checkout')}}</a>
+                                                        <a href="{{route('checkout')}}" class="checkout">{{__('cart.checkout')}}</a>
                                                     </div>
                                                 </li>
                                             </ul>

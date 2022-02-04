@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'save' => '',
-  'shop_now' => '',
-  'special_price' => '',
+  'save' => 'Save',
+  'shop_now' => 'Shop now',
+  'special_price' => 'Speacial Offer',
 );

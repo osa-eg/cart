@@ -1,8 +1,8 @@
 <?php
 
 return array (
-  'details' => '',
-  'index' => '',
-  'no_saved_users' => '',
-  'title' => '',
+  'details' => 'Customer Details',
+  'index' => 'Customer List',
+  'no_saved_users' => 'No Customers found',
+  'title' => 'Customers',
 );

@@ -56,4 +56,10 @@ class User extends Authenticatable
     {
         return ($this->image)?asset($this->image):asset('backend/assets/img/1.jpg');
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class,'user_id');
+    }
+
 }

@@ -1,13 +1,13 @@
 <?php
 
 return array (
-  'create' => '',
-  'create_subtitle' => '',
-  'details' => '',
-  'index' => '',
-  'no_saved_products' => '',
-  'not_available' => '',
-  'title' => '',
-  'update' => '',
-  'update_subtitle' => '',
+  'create' => 'New Product',
+  'create_subtitle' => 'Fill in all fields',
+  'details' => 'Product details',
+  'index' => 'Products List',
+  'no_saved_products' => 'No product has been saved',
+  'not_available' => 'Unavailable',
+  'title' => 'Products',
+  'update' => 'Update Product details',
+  'update_subtitle' => 'Fill in all fields',
 );

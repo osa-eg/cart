@@ -40,7 +40,6 @@ class CreateNewUser implements CreatesNewUsers
             'image' => set_avatar($input['name']),
             'password' => Hash::make($input['password']),
         ]);
-        $user->assignRole('customer');
         return  $user;
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
 return array (
-  'main_category' => '',
-  'not_found' => '',
-  'sub_category' => '',
+  'address' => 'address',
+  'main_category' => 'main category',
+  'not_found' => 'not fount',
+  'notes' => 'notes',
+  'sub_category' => 'sub-category',
 );

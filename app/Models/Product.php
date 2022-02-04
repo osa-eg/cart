@@ -79,10 +79,14 @@ class Product extends BaseModel implements HasMedia , TranslatableContract
     {
         return $this->belongsTo(Category::class);
     }
+    public function orders()
+    {
+        return $this->hasMany(OrderItem::class,'product_id');
+    }
 
     public function getDeletableAttribute() :Bool
     {
-        return true;
+        return !$this->orders()->count();
     }
 
 
