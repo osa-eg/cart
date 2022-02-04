@@ -55,6 +55,13 @@
             padding: 5px;
         }
     </style>
+    @if(app()->getLocale() == 'ar')
+        <style>
+            .breadcrumb-item + .breadcrumb-item::before{
+                float: unset !important; ;
+            }
+        </style>
+    @endif
     @stack('css')
 </head>
 
