@@ -45,57 +45,60 @@
                         <a href="{{route('cart.empty')}}" class="btn btn-outline-secondary">{{__('btn.empty_cart')}}</a>
 
                     </div>
-                    <div class="col-md-12 table-responsive">
-                        <table class="table cart-table">
-                            <thead>
-                            <tr class="table-head">
-                                <th scope="col">{{__('keys.image')}}</th>
-                                <th scope="col">{{__('keys.name')}}</th>
-                                <th scope="col">{{__('keys.unit_price')}}</th>
-                                <th scope="col" style="width: 120px">{{__('keys.qty')}}</th>
-                                <th scope="col">{{__('cart.sub_total')}}</th>
-                                <th scope="col">{{__('btn.delete')}}</th>
+                    <div class="col-md-12 ">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr class="table-head">
+                                    <th scope="col">{{__('keys.image')}}</th>
+                                    <th scope="col">{{__('keys.name')}}</th>
+                                    <th scope="col">{{__('keys.unit_price')}}</th>
+                                    <th scope="col" style="width: 120px">{{__('keys.qty')}}</th>
+                                    <th scope="col">{{__('cart.sub_total')}}</th>
+                                    <th scope="col">{{__('btn.delete')}}</th>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach( $cart->items as $id => $item)
-                                @php ($product = \App\Models\Product::find($id) )
-
-                                <tr class="text-center">
-                                    <td class="product-thumbnail" >
-                                        <a href="#">
-                                            <img src="{{$item['image']}}" alt="item">
-                                        </a>
-                                    </td>
-
-                                    <td class="product-name text-center">
-                                        <a href="#">{{$item['name_'.app()->getLocale()]}}</a>
-                                    </td>
-
-
-                                    <td class="product-price text-center">
-                                        <span class="unit-amount">${{$item['price'] }}  </span>
-                                    </td>
-
-
-                                    <td class="product-quantity text-center ">
-                                        <input type="number" name="quantity" data-id="{{$id}}" data-color="0" class="form-control quantity" max="{{$product->qty}}"  min="1" value="{{$item['qty']}}">
-                                    </td>
-                                    <td class="product-subtotal text-center" >
-                                        $ <span class="subtotal-amount">  {{ $item['totalLine']  }}</span>
-                                    </td>
-                                    <td class="text-center" >
-                                        <a href="#" onclick="$('#removeCartItem{{$id}}').submit()" data-id="{{ $id }}" class="remove mx-4 text-danger">
-                                            <i class="ti-trash"></i>
-                                            <form action="{{route('cart.delete_item',$id)}}" id="removeCartItem{{$id}}" method="get" hidden></form>
-                                        </a>
-                                    </td>
                                 </tr>
-                            @endforeach
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                @foreach( $cart->items as $id => $item)
+                                    @php ($product = \App\Models\Product::find($id) )
 
-                        </table>
+                                    <tr class="text-center">
+                                        <td class="product-thumbnail" >
+                                            <a href="#">
+                                                <img src="{{$item['image']}}" alt="item">
+                                            </a>
+                                        </td>
+
+                                        <td class="product-name text-center">
+                                            <a href="#">{{$item['name_'.app()->getLocale()]}}</a>
+                                        </td>
+
+
+                                        <td class="product-price text-center">
+                                            <span class="unit-amount">${{$item['price'] }}  </span>
+                                        </td>
+
+
+                                        <td class="product-quantity text-center ">
+                                            <input type="number" name="quantity" data-id="{{$id}}" data-color="0" class="form-control quantity" max="{{$product->qty}}"  min="1" value="{{$item['qty']}}">
+                                        </td>
+                                        <td class="product-subtotal text-center" >
+                                            $ <span class="subtotal-amount">  {{ $item['totalLine']  }}</span>
+                                        </td>
+                                        <td class="text-center" >
+                                            <a href="#" onclick="$('#removeCartItem{{$id}}').submit()" data-id="{{ $id }}" class="remove mx-4 text-danger">
+                                                <i class="ti-trash"></i>
+                                                <form action="{{route('cart.delete_item',$id)}}" id="removeCartItem{{$id}}" method="get" hidden></form>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+
+                            </table>
+
+                        </div>
                     </div>
                 </div>
 
