@@ -56,14 +56,6 @@ class Category extends BaseModel implements TranslatableContract
     {
         return $q->whereNotNull('parent_id');
     }
-    /**
-     * @param $q
-     * @return mixed
-     */
-    public function scopeActive($q)
-    {
-        return $q->where('active',1);
-    }
 
 
     public function products() : HasMany

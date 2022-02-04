@@ -11,4 +11,13 @@ class BaseModel extends Model
     {
         return array_values(\Schema::getColumnListing($this->tableName()));
     }
+
+    /**
+     * @param $q
+     * @return mixed
+     */
+    public function scopeActive($q)
+    {
+        return $q->where('active',1);
+    }
 }

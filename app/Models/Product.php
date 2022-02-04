@@ -46,14 +46,7 @@ class Product extends BaseModel implements HasMedia , TranslatableContract
             ->nonQueued();
     }
 
-    /**
-     * @param $q
-     * @return mixed
-     */
-    public function scopeActive($q)
-    {
-        return $q->where('active',1);
-    }
+
 
     /**
      * @param $q
