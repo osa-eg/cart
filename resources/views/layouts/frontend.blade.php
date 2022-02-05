@@ -54,6 +54,11 @@
             background-color: rgba(255, 255, 255, 0.5) !important;
             padding: 5px;
         }
+        @media (max-width: 767px) {
+            .cart-section tbody tr td:nth-last-child(-n + 4) {
+                 display: unset !important;
+            }
+        }
     </style>
     @if(app()->getLocale() == 'ar')
         <style>
