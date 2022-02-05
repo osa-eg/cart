@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-md-12 ">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table cart-table">
                                 <thead>
                                 <tr class="table-head">
                                     <th scope="col">{{__('keys.image')}}</th>
