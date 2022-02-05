@@ -55,8 +55,8 @@
             padding: 5px;
         }
         @media (max-width: 767px) {
-            .cart-section tbody tr td:nth-last-child(-n + 4) , .cart-section .cart-table thead th:nth-last-child(-n + 4){
-                 display: unset !important;
+            .cart-section tbody tr td:nth-last-child(-n + 4) {
+                 display: inline-block !important;
             }
         }
     </style>
