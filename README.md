@@ -32,9 +32,12 @@ admin dashboard has some of main features you need to build E-commerce Project s
 - First, clone the project.
 - Copy .env.example to be .env
 - Update Data base environment variables.
+- make sure that you set the correct "APP_URL" in .env 
 - Run php artisan optimize clear or php artisan config:clear to clear cache.
+- Run php artisan key:generate
 - Run Composer Install to install all packages.
-- Run php artisan migrate to migrate all tables.
+- Run php artisan migrate --seed to migrate all tables and seed fake data.
+- Run php artisan storage:link
 - Run php artisan serve to start the project.
 
 ### Developed By:
