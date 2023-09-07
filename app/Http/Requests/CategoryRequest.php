@@ -26,11 +26,12 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         $translations = RuleFactory::make([
-            '%name%'=>['sometimes','nullable', 'string', 'max:150',new UniqeInTranslations('category_translations','category_id',$this?->category?->id??null )],
+            '%name%' => ['sometimes', 'nullable', 'string', 'max:150', new UniqeInTranslations('category_translations', 'category_id', $this?->category?->id ?? null)],
         ]);
+
         $main = [
-            'parent_id'     => ['sometimes','nullable','integer', 'exists:categories,id'],
-         ];
-        return array_merge($translations , $main);
+            'parent_id'     => ['sometimes', 'nullable', 'integer', 'exists:categories,id'],
+        ];
+        return array_merge($translations, $main);
     }
 }

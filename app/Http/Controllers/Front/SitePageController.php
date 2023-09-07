@@ -12,18 +12,18 @@ class SitePageController extends Controller
     public function landing()
     {
         $products = Product::active()->withTranslation()->take(20)->inRandomOrder('id')->get();
-        return view('frontend.index',compact('products'));
+        return view('frontend.index', compact('products'));
     }
 
     public function category($slug)
     {
-        $category = Category::active()->whereTranslation('slug',$slug)->with('products')->firstOrFail();
+        $category = Category::active()->whereTranslation('slug', $slug)->with('products')->firstOrFail();
         $products = $category->products()->paginate(16);
-        return view('frontend.category',compact('products','category'));
+        return view('frontend.category', compact('products', 'category'));
     }
     public function product($slug)
     {
-        $product = Product::active()->whereTranslation('slug',$slug)->firstOrFail();
-        return view('frontend.product',compact('product'));
+        $product = Product::active()->whereTranslation('slug', $slug)->firstOrFail();
+        return view('frontend.product', compact('product'));
     }
 }

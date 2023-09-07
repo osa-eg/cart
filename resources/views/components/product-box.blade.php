@@ -1,9 +1,6 @@
 <div class="product-box">
 
     <div class="img-wrapper ">
-
-
-
         <div class="front  position-relative">
 
             <a href="{{route('product_details',$product->slug)}}">
